@@ -10,6 +10,6 @@ const Button = ({ children, onClick, color = 'primary' }: props) => {
       {children}
     </button>
   );
-};
+};        
 
 export default Button;
