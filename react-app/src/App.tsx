@@ -18,6 +18,7 @@ function App() {
       <ListGroup items={items} heading="state" onSelectItem={log}/>
     </div>
   );
+  
 }
 
 export default App;
