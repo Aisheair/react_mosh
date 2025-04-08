@@ -1,7 +1,7 @@
 // import { useState } from "react";
 import ListGroup from "./components/ListGroup";
 import './App.css'
-
+import { FaCalendar } from "react-icons/fa";
 
 function App() {
   // const [alertVisible, setalertVisible] = useState(false);
@@ -14,6 +14,7 @@ function App() {
     {/* {alertVisible && <Alert onClose={() => setalertVisible(false)}>My Alert</Alert>}
       <Button color="secondary" onClick={() => setalertVisible(true)}>My Button</Button> */}
       <ListGroup items={items} heading="state" onSelectItem={log}/>
+      <FaCalendar color="red" size={"40"}/>
     </div>
   );
 }
