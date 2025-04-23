@@ -1,13 +1,19 @@
-// import { useState } from "react";
-import Like from "./components/Like";
+import { useState } from "react";
+
 
 function App() {
+  // const [firstName, setfirstName] = useState('')
+  // const [lastName, setlastName] = useState('')
+  const [person, setPerson] = useState({
+    firstName: '',
+    lastName: ''
+  })
+  const [isLoading, setLoading] = useState(false)
   
 
   return (
     <div>
-      <Like onClick={() => console.log("clicked")
-      }/>
+      
     </div>
   );
 }
