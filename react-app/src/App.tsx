@@ -1,13 +1,11 @@
-import ExpandableText from "./ExpandableText";
+import Form from "./form";
 
 
 function App() {
 
   return (
     <div>
-      <ExpandableText maxChar={10}>
-        helloworld
-      </ExpandableText>
+      <Form/>
     </div>
   );
 }
