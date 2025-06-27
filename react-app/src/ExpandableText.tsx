@@ -1,4 +1,4 @@
-import React, { Children, useState } from "react";
+import { useState } from "react";
 interface Props {
   maxChar?: number;
   children: string;
