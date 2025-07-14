@@ -1,17 +1,23 @@
-import React from 'react'
+import React from "react";
+import { categories } from "../../App";
 
 interface Props {
-    onSelectCategory: (category: string) => void;
+  onSelectCategory: (category: string) => void;
 }
-const ExpenseFilter = ({onSelectCategory}:Props) => {
+const ExpenseFilter = ({ onSelectCategory }: Props) => {
   return (
-    <select className="form-select" onChange={(e) => onSelectCategory(e.target.value)} aria-label="Default select example">
-        <option value="">All Categories</option>
-        <option value="Groceries">Groceries</option>
-        <option value="Utilities">Utilities</option>
-        <option value="Entertainment">Entertainment</option>
+    <select
+      className="form-select"
+      onChange={(e) => onSelectCategory(e.target.value)}
+      aria-label="Default select example"
+    >
+      {categories.map((categories) => (
+        <option key={categories} value={categories}>
+          {categories}
+        </option>
+      ))}
     </select>
-  )
-}
+  );
+};
 
-export default ExpenseFilter
+export default ExpenseFilter;
