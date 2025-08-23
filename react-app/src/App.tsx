@@ -1,22 +1,25 @@
-import { use, useEffect } from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { set } from "zod/v4";
 
-const connect = () => {
-  console.log("Connecting to the service");
-};
-
-const disconnect = () => {
-  console.log("Disconnecting to the service");
-};
-
+interface User {
+  id: number;
+  name: string;
+}
 function App() {
-  useEffect(() => {
-    document.title = "My App";
-    connect();
-    
-    return () => disconnect();
-  });
+  const [users, setUsers] = useState<User[]>([]);
 
-  return <></>;
+  useEffect(() => {
+    axios
+      .get<User[]>("http://jsonplaceholder.typicode.com/users")
+      .then((res) => setUsers(res.data));
+  },[]);
+
+  return <>
+  <ul>
+    {users.map(user=> <li key={user.id}>{user.name}</li>)}
+    </ul>
+    </>;
 }
 
 export default App;
