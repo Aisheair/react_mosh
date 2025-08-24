@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import { useEffect, useState } from "react";
 import { set } from "zod/v4";
 
@@ -8,22 +8,33 @@ interface User {
 }
 function App() {
   const [users, setUsers] = useState<User[]>([]);
-  const [error, setError] = useState('')
+  const [error, setError] = useState("");
 
   useEffect(() => {
-    axios
-      .get<User[]>("http://jsonplaceholder.typicode.com/dusers")
-      .then((res) => setUsers(res.data))
-      .catch(err=> setError(err.message)
-      )
-  },[]);
+    // get -> promise -> res / err
+    const fetchUsers = async () => {
+      try {
+        const res = await axios.get<User[]>(
+          "http://jsonplaceholder.typicode.com/dusers"
+        );
+        setUsers(res.data);
+      } catch (err) {
+        setError((err as AxiosError).message);
+      }
+    };
+    fetchUsers();
+  }, []);
 
-  return <>
-  {error && <p className="text-danger">{error}</p>}
-  <ul>
-    {users.map(user=> <li key={user.id}>{user.name}</li>)}
-    </ul>
-    </>;
+  return (
+    <>
+      {error && <p className="text-danger">{error}</p>}
+      <ul>
+        {users.map((user) => (
+          <li key={user.id}>{user.name}</li>
+        ))}
+      </ul>
+    </>
+  );
 }
 
 export default App;
